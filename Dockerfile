@@ -1,8 +1,9 @@
-from grafana/k6
+FROM grafana/k6
 USER root
 RUN apk add --no-cache iproute2
 
 COPY run.sh .
-RUN chmod +x run.sh 
-# USER 12345
+COPY limit-tc.sh .
+RUN chmod +x run.sh &&\
+    chmod +x limit-tc.sh
 ENTRYPOINT ["/home/k6/run.sh"]

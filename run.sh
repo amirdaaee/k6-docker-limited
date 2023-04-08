@@ -1,3 +1,4 @@
 #!/bin/sh
-tc qdisc add dev eth0 root tbf rate $SPEED latency $LATENCY burst $BURST
+./limit-tc.sh start
+./limit-tc.sh status
 k6 $@
